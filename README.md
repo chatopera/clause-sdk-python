@@ -4,9 +4,28 @@
 
 ## 安装
 
+该Python包已经上传至[pypi](https://pypi.org/project/clause/)，用户可以使用pip直接安装。
+
 ```
 pip install clause
 ```
+
+当前稳定版本为 `1.x`。
+
+示例代码:
+
+```
+from clause import Client, Data
+from clause import CustomDict
+
+bot = Client(HOST_IP, HOST_PORT)
+# 创建自定义词典
+data = Data()
+data.customdict = CustomDict(name=customDictName, chatbotID=chatbot_id)
+response = self.bot.postCustomDict(data)
+```
+
+更多使用请参考```示例程序```。
 
 ## 示例程序
 
@@ -17,8 +36,12 @@ pip install clause
 ```
 git clone https://github.com/chatopera/py-clause.git
 cd py-clause
-./scripts/test.sh
+cp scripts/localrc.sample scripts/localrc
+vim scripts/localrc # 使用文本编辑器编辑 scripts/localrc，更新CL_HOST和CL_PORT
+./scripts/test.sh   # 执行测试程序
 ```
+
+更详细的代码请参考[链接](https://github.com/chatopera/py-clause/blob/master/tests/tst-demo.py)。
 
 ## API 接口详细介绍
 

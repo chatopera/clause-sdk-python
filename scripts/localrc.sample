@@ -1,2 +1,4 @@
+# Clause服务的IP地址
 CL_HOST=gamera
+# Clause服务的端口
 CL_PORT=28056

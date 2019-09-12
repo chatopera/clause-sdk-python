@@ -82,9 +82,7 @@ class Test(unittest.TestCase):
     def test_post_customdict(self):
         logging.info("创建自定义词典")
         data = Data()
-        data.customdict = CustomDict()
-        data.customdict.name = customDictName
-        data.customdict.chatbotID = chatbot_id
+        data.customdict = CustomDict(name=customDictName, chatbotID=chatbot_id)
         response = self.bot.postCustomDict(data)
         logging.debug("response: %s", response)
 
