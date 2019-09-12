@@ -17,7 +17,7 @@ pip install clause
 ```
 git clone https://github.com/chatopera/py-clause.git
 cd py-clause
-
+./scripts/test.sh
 ```
 
 ## API 接口详细介绍
