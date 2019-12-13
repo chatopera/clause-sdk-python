@@ -743,6 +743,231 @@ class DictWord(object):
         return not (self == other)
 
 
+class DictPattern(object):
+    """
+    正则词典的定义
+
+    Attributes:
+     - id
+     - dict_id
+     - patterns
+     - standard
+     - createdate
+     - updatedate
+
+    """
+
+
+    def __init__(self, id=None, dict_id=None, patterns=None, standard=None, createdate=None, updatedate=None,):
+        self.id = id
+        self.dict_id = dict_id
+        self.patterns = patterns
+        self.standard = standard
+        self.createdate = createdate
+        self.updatedate = updatedate
+
+    def read(self, iprot):
+        if iprot._fast_decode is not None and isinstance(iprot.trans, TTransport.CReadableTransport) and self.thrift_spec is not None:
+            iprot._fast_decode(self, iprot, [self.__class__, self.thrift_spec])
+            return
+        iprot.readStructBegin()
+        while True:
+            (fname, ftype, fid) = iprot.readFieldBegin()
+            if ftype == TType.STOP:
+                break
+            if fid == 1:
+                if ftype == TType.STRING:
+                    self.id = iprot.readString().decode('utf-8') if sys.version_info[0] == 2 else iprot.readString()
+                else:
+                    iprot.skip(ftype)
+            elif fid == 2:
+                if ftype == TType.STRING:
+                    self.dict_id = iprot.readString().decode('utf-8') if sys.version_info[0] == 2 else iprot.readString()
+                else:
+                    iprot.skip(ftype)
+            elif fid == 3:
+                if ftype == TType.LIST:
+                    self.patterns = []
+                    (_etype24, _size21) = iprot.readListBegin()
+                    for _i25 in range(_size21):
+                        _elem26 = iprot.readString().decode('utf-8') if sys.version_info[0] == 2 else iprot.readString()
+                        self.patterns.append(_elem26)
+                    iprot.readListEnd()
+                else:
+                    iprot.skip(ftype)
+            elif fid == 4:
+                if ftype == TType.STRING:
+                    self.standard = iprot.readString().decode('utf-8') if sys.version_info[0] == 2 else iprot.readString()
+                else:
+                    iprot.skip(ftype)
+            elif fid == 5:
+                if ftype == TType.STRING:
+                    self.createdate = iprot.readString().decode('utf-8') if sys.version_info[0] == 2 else iprot.readString()
+                else:
+                    iprot.skip(ftype)
+            elif fid == 6:
+                if ftype == TType.STRING:
+                    self.updatedate = iprot.readString().decode('utf-8') if sys.version_info[0] == 2 else iprot.readString()
+                else:
+                    iprot.skip(ftype)
+            else:
+                iprot.skip(ftype)
+            iprot.readFieldEnd()
+        iprot.readStructEnd()
+
+    def write(self, oprot):
+        if oprot._fast_encode is not None and self.thrift_spec is not None:
+            oprot.trans.write(oprot._fast_encode(self, [self.__class__, self.thrift_spec]))
+            return
+        oprot.writeStructBegin('DictPattern')
+        if self.id is not None:
+            oprot.writeFieldBegin('id', TType.STRING, 1)
+            oprot.writeString(self.id.encode('utf-8') if sys.version_info[0] == 2 else self.id)
+            oprot.writeFieldEnd()
+        if self.dict_id is not None:
+            oprot.writeFieldBegin('dict_id', TType.STRING, 2)
+            oprot.writeString(self.dict_id.encode('utf-8') if sys.version_info[0] == 2 else self.dict_id)
+            oprot.writeFieldEnd()
+        if self.patterns is not None:
+            oprot.writeFieldBegin('patterns', TType.LIST, 3)
+            oprot.writeListBegin(TType.STRING, len(self.patterns))
+            for iter27 in self.patterns:
+                oprot.writeString(iter27.encode('utf-8') if sys.version_info[0] == 2 else iter27)
+            oprot.writeListEnd()
+            oprot.writeFieldEnd()
+        if self.standard is not None:
+            oprot.writeFieldBegin('standard', TType.STRING, 4)
+            oprot.writeString(self.standard.encode('utf-8') if sys.version_info[0] == 2 else self.standard)
+            oprot.writeFieldEnd()
+        if self.createdate is not None:
+            oprot.writeFieldBegin('createdate', TType.STRING, 5)
+            oprot.writeString(self.createdate.encode('utf-8') if sys.version_info[0] == 2 else self.createdate)
+            oprot.writeFieldEnd()
+        if self.updatedate is not None:
+            oprot.writeFieldBegin('updatedate', TType.STRING, 6)
+            oprot.writeString(self.updatedate.encode('utf-8') if sys.version_info[0] == 2 else self.updatedate)
+            oprot.writeFieldEnd()
+        oprot.writeFieldStop()
+        oprot.writeStructEnd()
+
+    def validate(self):
+        return
+
+    def __repr__(self):
+        L = ['%s=%r' % (key, value)
+             for key, value in self.__dict__.items()]
+        return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
+
+    def __eq__(self, other):
+        return isinstance(other, self.__class__) and self.__dict__ == other.__dict__
+
+    def __ne__(self, other):
+        return not (self == other)
+
+
+class DictPatternCheck(object):
+    """
+    正则表达词典的验证
+
+    Attributes:
+     - id
+     - dict_id
+     - input
+     - output
+     - createdate
+
+    """
+
+
+    def __init__(self, id=None, dict_id=None, input=None, output=None, createdate=None,):
+        self.id = id
+        self.dict_id = dict_id
+        self.input = input
+        self.output = output
+        self.createdate = createdate
+
+    def read(self, iprot):
+        if iprot._fast_decode is not None and isinstance(iprot.trans, TTransport.CReadableTransport) and self.thrift_spec is not None:
+            iprot._fast_decode(self, iprot, [self.__class__, self.thrift_spec])
+            return
+        iprot.readStructBegin()
+        while True:
+            (fname, ftype, fid) = iprot.readFieldBegin()
+            if ftype == TType.STOP:
+                break
+            if fid == 1:
+                if ftype == TType.STRING:
+                    self.id = iprot.readString().decode('utf-8') if sys.version_info[0] == 2 else iprot.readString()
+                else:
+                    iprot.skip(ftype)
+            elif fid == 2:
+                if ftype == TType.STRING:
+                    self.dict_id = iprot.readString().decode('utf-8') if sys.version_info[0] == 2 else iprot.readString()
+                else:
+                    iprot.skip(ftype)
+            elif fid == 3:
+                if ftype == TType.STRING:
+                    self.input = iprot.readString().decode('utf-8') if sys.version_info[0] == 2 else iprot.readString()
+                else:
+                    iprot.skip(ftype)
+            elif fid == 4:
+                if ftype == TType.STRING:
+                    self.output = iprot.readString().decode('utf-8') if sys.version_info[0] == 2 else iprot.readString()
+                else:
+                    iprot.skip(ftype)
+            elif fid == 5:
+                if ftype == TType.STRING:
+                    self.createdate = iprot.readString().decode('utf-8') if sys.version_info[0] == 2 else iprot.readString()
+                else:
+                    iprot.skip(ftype)
+            else:
+                iprot.skip(ftype)
+            iprot.readFieldEnd()
+        iprot.readStructEnd()
+
+    def write(self, oprot):
+        if oprot._fast_encode is not None and self.thrift_spec is not None:
+            oprot.trans.write(oprot._fast_encode(self, [self.__class__, self.thrift_spec]))
+            return
+        oprot.writeStructBegin('DictPatternCheck')
+        if self.id is not None:
+            oprot.writeFieldBegin('id', TType.STRING, 1)
+            oprot.writeString(self.id.encode('utf-8') if sys.version_info[0] == 2 else self.id)
+            oprot.writeFieldEnd()
+        if self.dict_id is not None:
+            oprot.writeFieldBegin('dict_id', TType.STRING, 2)
+            oprot.writeString(self.dict_id.encode('utf-8') if sys.version_info[0] == 2 else self.dict_id)
+            oprot.writeFieldEnd()
+        if self.input is not None:
+            oprot.writeFieldBegin('input', TType.STRING, 3)
+            oprot.writeString(self.input.encode('utf-8') if sys.version_info[0] == 2 else self.input)
+            oprot.writeFieldEnd()
+        if self.output is not None:
+            oprot.writeFieldBegin('output', TType.STRING, 4)
+            oprot.writeString(self.output.encode('utf-8') if sys.version_info[0] == 2 else self.output)
+            oprot.writeFieldEnd()
+        if self.createdate is not None:
+            oprot.writeFieldBegin('createdate', TType.STRING, 5)
+            oprot.writeString(self.createdate.encode('utf-8') if sys.version_info[0] == 2 else self.createdate)
+            oprot.writeFieldEnd()
+        oprot.writeFieldStop()
+        oprot.writeStructEnd()
+
+    def validate(self):
+        return
+
+    def __repr__(self):
+        L = ['%s=%r' % (key, value)
+             for key, value in self.__dict__.items()]
+        return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
+
+    def __eq__(self, other):
+        return isinstance(other, self.__class__) and self.__dict__ == other.__dict__
+
+    def __ne__(self, other):
+        return not (self == other)
+
+
 class Dict(object):
     """
     词典
@@ -758,11 +983,13 @@ class Dict(object):
      - createdate
      - updatedate
      - referred
+     - type
+     - vendor
 
     """
 
 
-    def __init__(self, name=None, chatbotID=None, builtin=None, active=None, id=None, description=None, samples=None, createdate=None, updatedate=None, referred=None,):
+    def __init__(self, name=None, chatbotID=None, builtin=None, active=None, id=None, description=None, samples=None, createdate=None, updatedate=None, referred=None, type=None, vendor=None,):
         self.name = name
         self.chatbotID = chatbotID
         self.builtin = builtin
@@ -773,6 +1000,8 @@ class Dict(object):
         self.createdate = createdate
         self.updatedate = updatedate
         self.referred = referred
+        self.type = type
+        self.vendor = vendor
 
     def read(self, iprot):
         if iprot._fast_decode is not None and isinstance(iprot.trans, TTransport.CReadableTransport) and self.thrift_spec is not None:
@@ -833,6 +1062,16 @@ class Dict(object):
                     self.referred = iprot.readBool()
                 else:
                     iprot.skip(ftype)
+            elif fid == 11:
+                if ftype == TType.STRING:
+                    self.type = iprot.readString().decode('utf-8') if sys.version_info[0] == 2 else iprot.readString()
+                else:
+                    iprot.skip(ftype)
+            elif fid == 12:
+                if ftype == TType.STRING:
+                    self.vendor = iprot.readString().decode('utf-8') if sys.version_info[0] == 2 else iprot.readString()
+                else:
+                    iprot.skip(ftype)
             else:
                 iprot.skip(ftype)
             iprot.readFieldEnd()
@@ -882,6 +1121,14 @@ class Dict(object):
         if self.referred is not None:
             oprot.writeFieldBegin('referred', TType.BOOL, 10)
             oprot.writeBool(self.referred)
+            oprot.writeFieldEnd()
+        if self.type is not None:
+            oprot.writeFieldBegin('type', TType.STRING, 11)
+            oprot.writeString(self.type.encode('utf-8') if sys.version_info[0] == 2 else self.type)
+            oprot.writeFieldEnd()
+        if self.vendor is not None:
+            oprot.writeFieldBegin('vendor', TType.STRING, 12)
+            oprot.writeString(self.vendor.encode('utf-8') if sys.version_info[0] == 2 else self.vendor)
             oprot.writeFieldEnd()
         oprot.writeFieldStop()
         oprot.writeStructEnd()
@@ -1534,6 +1781,9 @@ class Data(object):
      - sysdict
      - botsysdict
      - dictword
+     - dictpattern
+     - patterncheck
+     - patternchecks
      - intents
      - slots
      - utters
@@ -1558,7 +1808,7 @@ class Data(object):
     """
 
 
-    def __init__(self, rc=None, error=None, msg=None, id=None, chatbotID=None, customdicts=None, sysdicts=None, botsysdicts=None, dictwords=None, customdict=None, sysdict=None, botsysdict=None, dictword=None, intents=None, slots=None, utters=None, intent=None, slot=None, utter=None, devvers=None, provers=None, devver=None, prover=None, sessions=None, messages=None, session=None, message=None, currpage=None, totalpage=None, totalrows=None, pagesize=None, page=None, query=None,):
+    def __init__(self, rc=None, error=None, msg=None, id=None, chatbotID=None, customdicts=None, sysdicts=None, botsysdicts=None, dictwords=None, customdict=None, sysdict=None, botsysdict=None, dictword=None, dictpattern=None, patterncheck=None, patternchecks=None, intents=None, slots=None, utters=None, intent=None, slot=None, utter=None, devvers=None, provers=None, devver=None, prover=None, sessions=None, messages=None, session=None, message=None, currpage=None, totalpage=None, totalrows=None, pagesize=None, page=None, query=None,):
         self.rc = rc
         self.error = error
         self.msg = msg
@@ -1572,6 +1822,9 @@ class Data(object):
         self.sysdict = sysdict
         self.botsysdict = botsysdict
         self.dictword = dictword
+        self.dictpattern = dictpattern
+        self.patterncheck = patterncheck
+        self.patternchecks = patternchecks
         self.intents = intents
         self.slots = slots
         self.utters = utters
@@ -1630,44 +1883,44 @@ class Data(object):
             elif fid == 6:
                 if ftype == TType.LIST:
                     self.customdicts = []
-                    (_etype24, _size21) = iprot.readListBegin()
-                    for _i25 in range(_size21):
-                        _elem26 = Dict()
-                        _elem26.read(iprot)
-                        self.customdicts.append(_elem26)
+                    (_etype31, _size28) = iprot.readListBegin()
+                    for _i32 in range(_size28):
+                        _elem33 = Dict()
+                        _elem33.read(iprot)
+                        self.customdicts.append(_elem33)
                     iprot.readListEnd()
                 else:
                     iprot.skip(ftype)
             elif fid == 7:
                 if ftype == TType.LIST:
                     self.sysdicts = []
-                    (_etype30, _size27) = iprot.readListBegin()
-                    for _i31 in range(_size27):
-                        _elem32 = Dict()
-                        _elem32.read(iprot)
-                        self.sysdicts.append(_elem32)
+                    (_etype37, _size34) = iprot.readListBegin()
+                    for _i38 in range(_size34):
+                        _elem39 = Dict()
+                        _elem39.read(iprot)
+                        self.sysdicts.append(_elem39)
                     iprot.readListEnd()
                 else:
                     iprot.skip(ftype)
             elif fid == 8:
                 if ftype == TType.LIST:
                     self.botsysdicts = []
-                    (_etype36, _size33) = iprot.readListBegin()
-                    for _i37 in range(_size33):
-                        _elem38 = BotSysdict()
-                        _elem38.read(iprot)
-                        self.botsysdicts.append(_elem38)
+                    (_etype43, _size40) = iprot.readListBegin()
+                    for _i44 in range(_size40):
+                        _elem45 = BotSysdict()
+                        _elem45.read(iprot)
+                        self.botsysdicts.append(_elem45)
                     iprot.readListEnd()
                 else:
                     iprot.skip(ftype)
             elif fid == 9:
                 if ftype == TType.LIST:
                     self.dictwords = []
-                    (_etype42, _size39) = iprot.readListBegin()
-                    for _i43 in range(_size39):
-                        _elem44 = DictWord()
-                        _elem44.read(iprot)
-                        self.dictwords.append(_elem44)
+                    (_etype49, _size46) = iprot.readListBegin()
+                    for _i50 in range(_size46):
+                        _elem51 = DictWord()
+                        _elem51.read(iprot)
+                        self.dictwords.append(_elem51)
                     iprot.readListEnd()
                 else:
                     iprot.skip(ftype)
@@ -1696,150 +1949,173 @@ class Data(object):
                 else:
                     iprot.skip(ftype)
             elif fid == 14:
-                if ftype == TType.LIST:
-                    self.intents = []
-                    (_etype48, _size45) = iprot.readListBegin()
-                    for _i49 in range(_size45):
-                        _elem50 = Intent()
-                        _elem50.read(iprot)
-                        self.intents.append(_elem50)
-                    iprot.readListEnd()
+                if ftype == TType.STRUCT:
+                    self.dictpattern = DictPattern()
+                    self.dictpattern.read(iprot)
                 else:
                     iprot.skip(ftype)
             elif fid == 15:
-                if ftype == TType.LIST:
-                    self.slots = []
-                    (_etype54, _size51) = iprot.readListBegin()
-                    for _i55 in range(_size51):
-                        _elem56 = IntentSlot()
-                        _elem56.read(iprot)
-                        self.slots.append(_elem56)
-                    iprot.readListEnd()
+                if ftype == TType.STRUCT:
+                    self.patterncheck = DictPatternCheck()
+                    self.patterncheck.read(iprot)
                 else:
                     iprot.skip(ftype)
             elif fid == 16:
                 if ftype == TType.LIST:
-                    self.utters = []
-                    (_etype60, _size57) = iprot.readListBegin()
-                    for _i61 in range(_size57):
-                        _elem62 = IntentUtter()
-                        _elem62.read(iprot)
-                        self.utters.append(_elem62)
+                    self.patternchecks = []
+                    (_etype55, _size52) = iprot.readListBegin()
+                    for _i56 in range(_size52):
+                        _elem57 = DictPatternCheck()
+                        _elem57.read(iprot)
+                        self.patternchecks.append(_elem57)
                     iprot.readListEnd()
                 else:
                     iprot.skip(ftype)
             elif fid == 17:
+                if ftype == TType.LIST:
+                    self.intents = []
+                    (_etype61, _size58) = iprot.readListBegin()
+                    for _i62 in range(_size58):
+                        _elem63 = Intent()
+                        _elem63.read(iprot)
+                        self.intents.append(_elem63)
+                    iprot.readListEnd()
+                else:
+                    iprot.skip(ftype)
+            elif fid == 18:
+                if ftype == TType.LIST:
+                    self.slots = []
+                    (_etype67, _size64) = iprot.readListBegin()
+                    for _i68 in range(_size64):
+                        _elem69 = IntentSlot()
+                        _elem69.read(iprot)
+                        self.slots.append(_elem69)
+                    iprot.readListEnd()
+                else:
+                    iprot.skip(ftype)
+            elif fid == 19:
+                if ftype == TType.LIST:
+                    self.utters = []
+                    (_etype73, _size70) = iprot.readListBegin()
+                    for _i74 in range(_size70):
+                        _elem75 = IntentUtter()
+                        _elem75.read(iprot)
+                        self.utters.append(_elem75)
+                    iprot.readListEnd()
+                else:
+                    iprot.skip(ftype)
+            elif fid == 20:
                 if ftype == TType.STRUCT:
                     self.intent = Intent()
                     self.intent.read(iprot)
                 else:
                     iprot.skip(ftype)
-            elif fid == 18:
+            elif fid == 21:
                 if ftype == TType.STRUCT:
                     self.slot = IntentSlot()
                     self.slot.read(iprot)
                 else:
                     iprot.skip(ftype)
-            elif fid == 19:
+            elif fid == 22:
                 if ftype == TType.STRUCT:
                     self.utter = IntentUtter()
                     self.utter.read(iprot)
                 else:
                     iprot.skip(ftype)
-            elif fid == 20:
+            elif fid == 23:
                 if ftype == TType.LIST:
                     self.devvers = []
-                    (_etype66, _size63) = iprot.readListBegin()
-                    for _i67 in range(_size63):
-                        _elem68 = DevelopVersion()
-                        _elem68.read(iprot)
-                        self.devvers.append(_elem68)
+                    (_etype79, _size76) = iprot.readListBegin()
+                    for _i80 in range(_size76):
+                        _elem81 = DevelopVersion()
+                        _elem81.read(iprot)
+                        self.devvers.append(_elem81)
                     iprot.readListEnd()
                 else:
                     iprot.skip(ftype)
-            elif fid == 21:
+            elif fid == 24:
                 if ftype == TType.LIST:
                     self.provers = []
-                    (_etype72, _size69) = iprot.readListBegin()
-                    for _i73 in range(_size69):
-                        _elem74 = ProdVersion()
-                        _elem74.read(iprot)
-                        self.provers.append(_elem74)
+                    (_etype85, _size82) = iprot.readListBegin()
+                    for _i86 in range(_size82):
+                        _elem87 = ProdVersion()
+                        _elem87.read(iprot)
+                        self.provers.append(_elem87)
                     iprot.readListEnd()
                 else:
                     iprot.skip(ftype)
-            elif fid == 22:
+            elif fid == 25:
                 if ftype == TType.STRUCT:
                     self.devver = DevelopVersion()
                     self.devver.read(iprot)
                 else:
                     iprot.skip(ftype)
-            elif fid == 23:
+            elif fid == 26:
                 if ftype == TType.STRUCT:
                     self.prover = ProdVersion()
                     self.prover.read(iprot)
                 else:
                     iprot.skip(ftype)
-            elif fid == 24:
+            elif fid == 27:
                 if ftype == TType.LIST:
                     self.sessions = []
-                    (_etype78, _size75) = iprot.readListBegin()
-                    for _i79 in range(_size75):
-                        _elem80 = ChatSession()
-                        _elem80.read(iprot)
-                        self.sessions.append(_elem80)
+                    (_etype91, _size88) = iprot.readListBegin()
+                    for _i92 in range(_size88):
+                        _elem93 = ChatSession()
+                        _elem93.read(iprot)
+                        self.sessions.append(_elem93)
                     iprot.readListEnd()
                 else:
                     iprot.skip(ftype)
-            elif fid == 25:
+            elif fid == 28:
                 if ftype == TType.LIST:
                     self.messages = []
-                    (_etype84, _size81) = iprot.readListBegin()
-                    for _i85 in range(_size81):
-                        _elem86 = ChatMessage()
-                        _elem86.read(iprot)
-                        self.messages.append(_elem86)
+                    (_etype97, _size94) = iprot.readListBegin()
+                    for _i98 in range(_size94):
+                        _elem99 = ChatMessage()
+                        _elem99.read(iprot)
+                        self.messages.append(_elem99)
                     iprot.readListEnd()
                 else:
                     iprot.skip(ftype)
-            elif fid == 26:
+            elif fid == 29:
                 if ftype == TType.STRUCT:
                     self.session = ChatSession()
                     self.session.read(iprot)
                 else:
                     iprot.skip(ftype)
-            elif fid == 27:
+            elif fid == 30:
                 if ftype == TType.STRUCT:
                     self.message = ChatMessage()
                     self.message.read(iprot)
                 else:
                     iprot.skip(ftype)
-            elif fid == 28:
+            elif fid == 31:
                 if ftype == TType.I32:
                     self.currpage = iprot.readI32()
                 else:
                     iprot.skip(ftype)
-            elif fid == 29:
+            elif fid == 32:
                 if ftype == TType.I32:
                     self.totalpage = iprot.readI32()
                 else:
                     iprot.skip(ftype)
-            elif fid == 30:
+            elif fid == 33:
                 if ftype == TType.I32:
                     self.totalrows = iprot.readI32()
                 else:
                     iprot.skip(ftype)
-            elif fid == 31:
+            elif fid == 34:
                 if ftype == TType.I32:
                     self.pagesize = iprot.readI32()
                 else:
                     iprot.skip(ftype)
-            elif fid == 32:
+            elif fid == 35:
                 if ftype == TType.I32:
                     self.page = iprot.readI32()
                 else:
                     iprot.skip(ftype)
-            elif fid == 33:
+            elif fid == 36:
                 if ftype == TType.STRING:
                     self.query = iprot.readString().decode('utf-8') if sys.version_info[0] == 2 else iprot.readString()
                 else:
@@ -1877,29 +2153,29 @@ class Data(object):
         if self.customdicts is not None:
             oprot.writeFieldBegin('customdicts', TType.LIST, 6)
             oprot.writeListBegin(TType.STRUCT, len(self.customdicts))
-            for iter87 in self.customdicts:
-                iter87.write(oprot)
+            for iter100 in self.customdicts:
+                iter100.write(oprot)
             oprot.writeListEnd()
             oprot.writeFieldEnd()
         if self.sysdicts is not None:
             oprot.writeFieldBegin('sysdicts', TType.LIST, 7)
             oprot.writeListBegin(TType.STRUCT, len(self.sysdicts))
-            for iter88 in self.sysdicts:
-                iter88.write(oprot)
+            for iter101 in self.sysdicts:
+                iter101.write(oprot)
             oprot.writeListEnd()
             oprot.writeFieldEnd()
         if self.botsysdicts is not None:
             oprot.writeFieldBegin('botsysdicts', TType.LIST, 8)
             oprot.writeListBegin(TType.STRUCT, len(self.botsysdicts))
-            for iter89 in self.botsysdicts:
-                iter89.write(oprot)
+            for iter102 in self.botsysdicts:
+                iter102.write(oprot)
             oprot.writeListEnd()
             oprot.writeFieldEnd()
         if self.dictwords is not None:
             oprot.writeFieldBegin('dictwords', TType.LIST, 9)
             oprot.writeListBegin(TType.STRUCT, len(self.dictwords))
-            for iter90 in self.dictwords:
-                iter90.write(oprot)
+            for iter103 in self.dictwords:
+                iter103.write(oprot)
             oprot.writeListEnd()
             oprot.writeFieldEnd()
         if self.customdict is not None:
@@ -1918,105 +2194,120 @@ class Data(object):
             oprot.writeFieldBegin('dictword', TType.STRUCT, 13)
             self.dictword.write(oprot)
             oprot.writeFieldEnd()
+        if self.dictpattern is not None:
+            oprot.writeFieldBegin('dictpattern', TType.STRUCT, 14)
+            self.dictpattern.write(oprot)
+            oprot.writeFieldEnd()
+        if self.patterncheck is not None:
+            oprot.writeFieldBegin('patterncheck', TType.STRUCT, 15)
+            self.patterncheck.write(oprot)
+            oprot.writeFieldEnd()
+        if self.patternchecks is not None:
+            oprot.writeFieldBegin('patternchecks', TType.LIST, 16)
+            oprot.writeListBegin(TType.STRUCT, len(self.patternchecks))
+            for iter104 in self.patternchecks:
+                iter104.write(oprot)
+            oprot.writeListEnd()
+            oprot.writeFieldEnd()
         if self.intents is not None:
-            oprot.writeFieldBegin('intents', TType.LIST, 14)
+            oprot.writeFieldBegin('intents', TType.LIST, 17)
             oprot.writeListBegin(TType.STRUCT, len(self.intents))
-            for iter91 in self.intents:
-                iter91.write(oprot)
+            for iter105 in self.intents:
+                iter105.write(oprot)
             oprot.writeListEnd()
             oprot.writeFieldEnd()
         if self.slots is not None:
-            oprot.writeFieldBegin('slots', TType.LIST, 15)
+            oprot.writeFieldBegin('slots', TType.LIST, 18)
             oprot.writeListBegin(TType.STRUCT, len(self.slots))
-            for iter92 in self.slots:
-                iter92.write(oprot)
+            for iter106 in self.slots:
+                iter106.write(oprot)
             oprot.writeListEnd()
             oprot.writeFieldEnd()
         if self.utters is not None:
-            oprot.writeFieldBegin('utters', TType.LIST, 16)
+            oprot.writeFieldBegin('utters', TType.LIST, 19)
             oprot.writeListBegin(TType.STRUCT, len(self.utters))
-            for iter93 in self.utters:
-                iter93.write(oprot)
+            for iter107 in self.utters:
+                iter107.write(oprot)
             oprot.writeListEnd()
             oprot.writeFieldEnd()
         if self.intent is not None:
-            oprot.writeFieldBegin('intent', TType.STRUCT, 17)
+            oprot.writeFieldBegin('intent', TType.STRUCT, 20)
             self.intent.write(oprot)
             oprot.writeFieldEnd()
         if self.slot is not None:
-            oprot.writeFieldBegin('slot', TType.STRUCT, 18)
+            oprot.writeFieldBegin('slot', TType.STRUCT, 21)
             self.slot.write(oprot)
             oprot.writeFieldEnd()
         if self.utter is not None:
-            oprot.writeFieldBegin('utter', TType.STRUCT, 19)
+            oprot.writeFieldBegin('utter', TType.STRUCT, 22)
             self.utter.write(oprot)
             oprot.writeFieldEnd()
         if self.devvers is not None:
-            oprot.writeFieldBegin('devvers', TType.LIST, 20)
+            oprot.writeFieldBegin('devvers', TType.LIST, 23)
             oprot.writeListBegin(TType.STRUCT, len(self.devvers))
-            for iter94 in self.devvers:
-                iter94.write(oprot)
+            for iter108 in self.devvers:
+                iter108.write(oprot)
             oprot.writeListEnd()
             oprot.writeFieldEnd()
         if self.provers is not None:
-            oprot.writeFieldBegin('provers', TType.LIST, 21)
+            oprot.writeFieldBegin('provers', TType.LIST, 24)
             oprot.writeListBegin(TType.STRUCT, len(self.provers))
-            for iter95 in self.provers:
-                iter95.write(oprot)
+            for iter109 in self.provers:
+                iter109.write(oprot)
             oprot.writeListEnd()
             oprot.writeFieldEnd()
         if self.devver is not None:
-            oprot.writeFieldBegin('devver', TType.STRUCT, 22)
+            oprot.writeFieldBegin('devver', TType.STRUCT, 25)
             self.devver.write(oprot)
             oprot.writeFieldEnd()
         if self.prover is not None:
-            oprot.writeFieldBegin('prover', TType.STRUCT, 23)
+            oprot.writeFieldBegin('prover', TType.STRUCT, 26)
             self.prover.write(oprot)
             oprot.writeFieldEnd()
         if self.sessions is not None:
-            oprot.writeFieldBegin('sessions', TType.LIST, 24)
+            oprot.writeFieldBegin('sessions', TType.LIST, 27)
             oprot.writeListBegin(TType.STRUCT, len(self.sessions))
-            for iter96 in self.sessions:
-                iter96.write(oprot)
+            for iter110 in self.sessions:
+                iter110.write(oprot)
             oprot.writeListEnd()
             oprot.writeFieldEnd()
         if self.messages is not None:
-            oprot.writeFieldBegin('messages', TType.LIST, 25)
+            oprot.writeFieldBegin('messages', TType.LIST, 28)
             oprot.writeListBegin(TType.STRUCT, len(self.messages))
-            for iter97 in self.messages:
-                iter97.write(oprot)
+            for iter111 in self.messages:
+                iter111.write(oprot)
             oprot.writeListEnd()
             oprot.writeFieldEnd()
         if self.session is not None:
-            oprot.writeFieldBegin('session', TType.STRUCT, 26)
+            oprot.writeFieldBegin('session', TType.STRUCT, 29)
             self.session.write(oprot)
             oprot.writeFieldEnd()
         if self.message is not None:
-            oprot.writeFieldBegin('message', TType.STRUCT, 27)
+            oprot.writeFieldBegin('message', TType.STRUCT, 30)
             self.message.write(oprot)
             oprot.writeFieldEnd()
         if self.currpage is not None:
-            oprot.writeFieldBegin('currpage', TType.I32, 28)
+            oprot.writeFieldBegin('currpage', TType.I32, 31)
             oprot.writeI32(self.currpage)
             oprot.writeFieldEnd()
         if self.totalpage is not None:
-            oprot.writeFieldBegin('totalpage', TType.I32, 29)
+            oprot.writeFieldBegin('totalpage', TType.I32, 32)
             oprot.writeI32(self.totalpage)
             oprot.writeFieldEnd()
         if self.totalrows is not None:
-            oprot.writeFieldBegin('totalrows', TType.I32, 30)
+            oprot.writeFieldBegin('totalrows', TType.I32, 33)
             oprot.writeI32(self.totalrows)
             oprot.writeFieldEnd()
         if self.pagesize is not None:
-            oprot.writeFieldBegin('pagesize', TType.I32, 31)
+            oprot.writeFieldBegin('pagesize', TType.I32, 34)
             oprot.writeI32(self.pagesize)
             oprot.writeFieldEnd()
         if self.page is not None:
-            oprot.writeFieldBegin('page', TType.I32, 32)
+            oprot.writeFieldBegin('page', TType.I32, 35)
             oprot.writeI32(self.page)
             oprot.writeFieldEnd()
         if self.query is not None:
-            oprot.writeFieldBegin('query', TType.STRING, 33)
+            oprot.writeFieldBegin('query', TType.STRING, 36)
             oprot.writeString(self.query.encode('utf-8') if sys.version_info[0] == 2 else self.query)
             oprot.writeFieldEnd()
         oprot.writeFieldStop()
@@ -2097,6 +2388,25 @@ DictWord.thrift_spec = (
     (6, TType.STRING, 'createdate', 'UTF8', None, ),  # 6
     (7, TType.STRING, 'updatedate', 'UTF8', None, ),  # 7
 )
+all_structs.append(DictPattern)
+DictPattern.thrift_spec = (
+    None,  # 0
+    (1, TType.STRING, 'id', 'UTF8', None, ),  # 1
+    (2, TType.STRING, 'dict_id', 'UTF8', None, ),  # 2
+    (3, TType.LIST, 'patterns', (TType.STRING, 'UTF8', False), None, ),  # 3
+    (4, TType.STRING, 'standard', 'UTF8', None, ),  # 4
+    (5, TType.STRING, 'createdate', 'UTF8', None, ),  # 5
+    (6, TType.STRING, 'updatedate', 'UTF8', None, ),  # 6
+)
+all_structs.append(DictPatternCheck)
+DictPatternCheck.thrift_spec = (
+    None,  # 0
+    (1, TType.STRING, 'id', 'UTF8', None, ),  # 1
+    (2, TType.STRING, 'dict_id', 'UTF8', None, ),  # 2
+    (3, TType.STRING, 'input', 'UTF8', None, ),  # 3
+    (4, TType.STRING, 'output', 'UTF8', None, ),  # 4
+    (5, TType.STRING, 'createdate', 'UTF8', None, ),  # 5
+)
 all_structs.append(Dict)
 Dict.thrift_spec = (
     None,  # 0
@@ -2110,6 +2420,8 @@ Dict.thrift_spec = (
     (8, TType.STRING, 'createdate', 'UTF8', None, ),  # 8
     (9, TType.STRING, 'updatedate', 'UTF8', None, ),  # 9
     (10, TType.BOOL, 'referred', None, None, ),  # 10
+    (11, TType.STRING, 'type', 'UTF8', None, ),  # 11
+    (12, TType.STRING, 'vendor', 'UTF8', None, ),  # 12
 )
 all_structs.append(Intent)
 Intent.thrift_spec = (
@@ -2181,26 +2493,29 @@ Data.thrift_spec = (
     (11, TType.STRUCT, 'sysdict', [Dict, None], None, ),  # 11
     (12, TType.STRUCT, 'botsysdict', [BotSysdict, None], None, ),  # 12
     (13, TType.STRUCT, 'dictword', [DictWord, None], None, ),  # 13
-    (14, TType.LIST, 'intents', (TType.STRUCT, [Intent, None], False), None, ),  # 14
-    (15, TType.LIST, 'slots', (TType.STRUCT, [IntentSlot, None], False), None, ),  # 15
-    (16, TType.LIST, 'utters', (TType.STRUCT, [IntentUtter, None], False), None, ),  # 16
-    (17, TType.STRUCT, 'intent', [Intent, None], None, ),  # 17
-    (18, TType.STRUCT, 'slot', [IntentSlot, None], None, ),  # 18
-    (19, TType.STRUCT, 'utter', [IntentUtter, None], None, ),  # 19
-    (20, TType.LIST, 'devvers', (TType.STRUCT, [DevelopVersion, None], False), None, ),  # 20
-    (21, TType.LIST, 'provers', (TType.STRUCT, [ProdVersion, None], False), None, ),  # 21
-    (22, TType.STRUCT, 'devver', [DevelopVersion, None], None, ),  # 22
-    (23, TType.STRUCT, 'prover', [ProdVersion, None], None, ),  # 23
-    (24, TType.LIST, 'sessions', (TType.STRUCT, [ChatSession, None], False), None, ),  # 24
-    (25, TType.LIST, 'messages', (TType.STRUCT, [ChatMessage, None], False), None, ),  # 25
-    (26, TType.STRUCT, 'session', [ChatSession, None], None, ),  # 26
-    (27, TType.STRUCT, 'message', [ChatMessage, None], None, ),  # 27
-    (28, TType.I32, 'currpage', None, None, ),  # 28
-    (29, TType.I32, 'totalpage', None, None, ),  # 29
-    (30, TType.I32, 'totalrows', None, None, ),  # 30
-    (31, TType.I32, 'pagesize', None, None, ),  # 31
-    (32, TType.I32, 'page', None, None, ),  # 32
-    (33, TType.STRING, 'query', 'UTF8', None, ),  # 33
+    (14, TType.STRUCT, 'dictpattern', [DictPattern, None], None, ),  # 14
+    (15, TType.STRUCT, 'patterncheck', [DictPatternCheck, None], None, ),  # 15
+    (16, TType.LIST, 'patternchecks', (TType.STRUCT, [DictPatternCheck, None], False), None, ),  # 16
+    (17, TType.LIST, 'intents', (TType.STRUCT, [Intent, None], False), None, ),  # 17
+    (18, TType.LIST, 'slots', (TType.STRUCT, [IntentSlot, None], False), None, ),  # 18
+    (19, TType.LIST, 'utters', (TType.STRUCT, [IntentUtter, None], False), None, ),  # 19
+    (20, TType.STRUCT, 'intent', [Intent, None], None, ),  # 20
+    (21, TType.STRUCT, 'slot', [IntentSlot, None], None, ),  # 21
+    (22, TType.STRUCT, 'utter', [IntentUtter, None], None, ),  # 22
+    (23, TType.LIST, 'devvers', (TType.STRUCT, [DevelopVersion, None], False), None, ),  # 23
+    (24, TType.LIST, 'provers', (TType.STRUCT, [ProdVersion, None], False), None, ),  # 24
+    (25, TType.STRUCT, 'devver', [DevelopVersion, None], None, ),  # 25
+    (26, TType.STRUCT, 'prover', [ProdVersion, None], None, ),  # 26
+    (27, TType.LIST, 'sessions', (TType.STRUCT, [ChatSession, None], False), None, ),  # 27
+    (28, TType.LIST, 'messages', (TType.STRUCT, [ChatMessage, None], False), None, ),  # 28
+    (29, TType.STRUCT, 'session', [ChatSession, None], None, ),  # 29
+    (30, TType.STRUCT, 'message', [ChatMessage, None], None, ),  # 30
+    (31, TType.I32, 'currpage', None, None, ),  # 31
+    (32, TType.I32, 'totalpage', None, None, ),  # 32
+    (33, TType.I32, 'totalrows', None, None, ),  # 33
+    (34, TType.I32, 'pagesize', None, None, ),  # 34
+    (35, TType.I32, 'page', None, None, ),  # 35
+    (36, TType.STRING, 'query', 'UTF8', None, ),  # 36
 )
 fix_spec(all_structs)
 del all_structs

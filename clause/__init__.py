@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 #===============================================================================
 #
-# Copyright (c) 2018 <> All Rights Reserved
+# Copyright (c) 2019 <https://www.chatopera.com> All Rights Reserved
 #
 #
 # File: /Users/hain/chatopera/py-clause/clause/__init__.py
@@ -11,14 +11,15 @@
 #===============================================================================
 __all__ = [ "Client", "Data", "CustomDict", "SysDict", "Intent",
             "IntentSlot", "IntentUtter", "ProdVersion", "DevelopVersion",
-            "BotSysdict", "ChatMessage", "ChatSession", "Entity", "DictWord",
+            "BotSysdict", "ChatMessage", "ChatSession", "Entity", 
+            "DictWord", "DictPattern", "DictPatternCheck",
             "__version__", "__copyright__", "__author__", "__date__"]
 
 from .gen.clause import ttypes, constants, Serving
 __copyright__ = "Copyright (c) 2019 Chatopera Inc. All Rights Reserved"
 __author__ = "Hai Liang Wang<hain@chatopera.com>"
-__date__ = "2019-09-11"
-__version__ = "1.0.0"
+__date__ = "2019-12-12"
+__version__ = "1.1.0"
 
 ## Apache Thrift
 from thrift.transport import TSocket
@@ -39,6 +40,8 @@ BotSysdict = ttypes.BotSysdict
 ChatMessage = ttypes.ChatMessage
 ChatSession = ttypes.ChatSession
 DictWord = ttypes.DictWord
+DictPattern = ttypes.DictPattern
+DictPatternCheck = ttypes.DictPatternCheck
 
 ## logging
 from absl import logging #absl-py
@@ -424,6 +427,38 @@ class Client():
     def getSession(self, request):
         '''
         获得会话信息
+        :param request:
+        :return:
+        '''
+
+    @ClRequest()
+    def putDictPattern(self, request):
+        '''
+        更新正则表达式词典
+        :param request:
+        :return:
+        '''
+
+    @ClRequest()
+    def getDictPattern(self, request):
+        '''
+        获得正则表达式词典定义
+        :param request:
+        :return:
+        '''
+
+    @ClRequest()
+    def checkDictPattern(self, request):
+        '''
+        调试正则表达式
+        :param request:
+        :return:
+        '''
+
+    @ClRequest()
+    def checkHistoryDictPattern(self, request):
+        '''
+        调整正则表达式历史记录
         :param request:
         :return:
         '''

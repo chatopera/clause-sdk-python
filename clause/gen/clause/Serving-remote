@@ -41,6 +41,10 @@ if len(sys.argv) <= 1 or sys.argv[1] == '--help':
     print('  Data getDictWords(Data request)')
     print('  Data delDictWord(Data request)')
     print('  Data hasDictWord(Data request)')
+    print('  Data getDictPattern(Data request)')
+    print('  Data putDictPattern(Data request)')
+    print('  Data checkDictPattern(Data request)')
+    print('  Data checkHistoryDictPattern(Data request)')
     print('  Data postIntent(Data request)')
     print('  Data putIntent(Data request)')
     print('  Data getIntents(Data request)')
@@ -246,6 +250,30 @@ elif cmd == 'hasDictWord':
         print('hasDictWord requires 1 args')
         sys.exit(1)
     pp.pprint(client.hasDictWord(eval(args[0]),))
+
+elif cmd == 'getDictPattern':
+    if len(args) != 1:
+        print('getDictPattern requires 1 args')
+        sys.exit(1)
+    pp.pprint(client.getDictPattern(eval(args[0]),))
+
+elif cmd == 'putDictPattern':
+    if len(args) != 1:
+        print('putDictPattern requires 1 args')
+        sys.exit(1)
+    pp.pprint(client.putDictPattern(eval(args[0]),))
+
+elif cmd == 'checkDictPattern':
+    if len(args) != 1:
+        print('checkDictPattern requires 1 args')
+        sys.exit(1)
+    pp.pprint(client.checkDictPattern(eval(args[0]),))
+
+elif cmd == 'checkHistoryDictPattern':
+    if len(args) != 1:
+        print('checkHistoryDictPattern requires 1 args')
+        sys.exit(1)
+    pp.pprint(client.checkHistoryDictPattern(eval(args[0]),))
 
 elif cmd == 'postIntent':
     if len(args) != 1:
