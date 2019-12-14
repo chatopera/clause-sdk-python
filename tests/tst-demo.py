@@ -57,7 +57,7 @@ intent_name = "takeOut"
 customDictVocab= "food"
 customDictPattern = "orderNumber"
 # 订单的标识: OR前缀且后面有三位数字
-customDictPatternDef = "OR\\d{3}"
+customDictPatternDef = "OR\\\\d{3}"
 
 def clean_up_bot(bot, chatbotID):
     '''
@@ -167,6 +167,12 @@ class Test(unittest.TestCase):
         resp = self.bot.refSysDict(data)
         logging.info("refSysDict response: %s", resp)
 
+        data = Data()
+        data.chatbotID = chatbot_id
+        data.sysdict = SysDict(name="@LOC")
+        resp = self.bot.refSysDict(data)
+        logging.info("refSysDict response: %s", resp)
+
         '''
         意图管理
         '''
@@ -187,7 +193,7 @@ class Test(unittest.TestCase):
         # 创建意图槽位：订单ID
         data = Data()
         data.intent = Intent(chatbotID=chatbot_id, name=intent_name)
-        data.slot = IntentSlot(name="orderId", requires=False)
+        data.slot = IntentSlot(name="orderId", requires=True, question="您的订单ID是什么？")
         data.customdict = CustomDict(chatbotID=chatbot_id, name=customDictPattern)
         resp = self.bot.postSlot(data)
         logging.info("postSlot response: %s", resp)
@@ -195,7 +201,7 @@ class Test(unittest.TestCase):
         # 创建意图槽位: 送达时间
         data = Data()
         data.intent = Intent(chatbotID=chatbot_id, name=intent_name)
-        data.slot = IntentSlot(name="date", requires=True, question="您希望什么时候用餐")
+        data.slot = IntentSlot(name="date", requires=False, question="您希望什么时候用餐")
         data.sysdict = SysDict(name="@TIME")
         resp = self.bot.postSlot(data)
         logging.info("postSlot response: %s", resp)
@@ -204,6 +210,7 @@ class Test(unittest.TestCase):
         data = Data()
         data.intent = Intent(chatbotID=chatbot_id, name=intent_name)
         data.slot = IntentSlot(name="location", requires=True, question="外卖送到哪里")
+        data.sysdict = SysDict(name="@LOC")
         resp = self.bot.postSlot(data)
         logging.info("postSlot response: %s", resp)
 
@@ -256,17 +263,24 @@ class Test(unittest.TestCase):
         # 对话
         data = Data()
         data.session = ChatSession(id=sessionId)
+
         text = "我想点外卖，来一份番茄"
         logging.info("chat human: %s", text)
         data.message = ChatMessage(textMessage=text)
         resp = self.bot.chat(data)
         logging.info("chat bot: %s \n 意图: %s", resp.message.textMessage, resp.session)
 
-        text = "我想在下午三点用餐"
+        text = "我的订单是OR666，帮我送到知春路10号"
         logging.info("chat human: %s", text)
         data.message = ChatMessage(textMessage=text)
         resp = self.bot.chat(data)
         logging.info("chat bot: %s \n 意图: %s", resp.message.textMessage, resp.session)
+
+        # text = "我想在下午三点用餐"
+        # logging.info("chat human: %s", text)
+        # data.message = ChatMessage(textMessage=text)
+        # resp = self.bot.chat(data)
+        # logging.info("chat bot: %s \n 意图: %s", resp.message.textMessage, resp.session)
 
 def test():
     suite = unittest.TestSuite()
