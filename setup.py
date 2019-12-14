@@ -3,7 +3,11 @@ from setuptools import setup, find_packages
 from clause import __version__
 
 with open("README.md", "r") as fh:
-    long_description = fh.read()
+    long_description = '''
+中文语义理解服务 Python SDK
+----------------------------
+https://github.com/chatopera/py-clause/
+'''
 
 setup(
     name='clause',
